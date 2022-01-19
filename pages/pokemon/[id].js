@@ -1,17 +1,18 @@
 /* eslint-disable @next/next/no-img-element */
 import Pokedex from "pokedex-promise-v2";
 
-import Layout from "../components/Layout";
+import Layout from "../../components/Layout";
 import Link from "next/link";
 
-import Type from "../components/Type";
-import Stat from "../components/Stat";
-import Footer from "../components/Footer";
+import Type from "../../components/Type";
+import Stat from "../../components/Stat";
+import Footer from "../../components/Footer";
+import { motion } from "framer-motion";
 
 export default function Pokemon({ pokemon }) {
   return (
     <Layout title={`${pokemon.name} | Pokedex`}>
-      <div className="grid grid-cols-2 gap-4 bg-violet-200 shadow rounded-lg p-4 m-4">
+      <motion.div className="grid grid-cols-2 gap-4 bg-violet-200 shadow rounded-lg p-4 m-4" initial={{ opacity: 0, x: -100 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
         <div className="flex flex-col justify-center align-middle">
           <p className="text-center text-2xl font-bold mb-4">{pokemon.name}</p>
           <img
@@ -54,9 +55,9 @@ export default function Pokemon({ pokemon }) {
             })}
           </div>
         </div>
-      </div>
+      </motion.div>
 
-      <div className="grid grid-cols-2 gap-4 bg-violet-200 shadow rounded-lg p-4 m-4">
+      <motion.div className="grid grid-cols-2 gap-4 bg-violet-200 shadow rounded-lg p-4 m-4" initial={{ opacity: 0, x: 100 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
         <div className="flex flex-col justify-start">
           <p className="text-center text-2xl font-bold mb-4">Type</p>
           <div className="flex flex-col md:flex-row justify-center">
@@ -74,7 +75,7 @@ export default function Pokemon({ pokemon }) {
             })}
           </div>
         </div>
-      </div>
+      </motion.div>
 
       <h5 className="mt-6 text-center">
         <Link href={"/"}>
