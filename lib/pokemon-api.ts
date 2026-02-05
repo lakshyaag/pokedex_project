@@ -3,13 +3,12 @@ import type { Pokemon, PokemonDetail, EvolutionChain, PokemonSpecies } from './t
 
 const dex = new Pokedex()
 
-export async function getPokemonList(limit: number = 386): Promise<Pokemon[]> {
+export async function getPokemonList(limit: number = 1025): Promise<Pokemon[]> {
   const pokemons = await dex.getPokemonsList({ limit })
   
   return pokemons.results.map((data, index) => {
     const id = index + 1
-    const paddedId = String(id).padStart(3, '0')
-    const image = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${paddedId}.png`
+    const image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
 
     return {
       id,
@@ -22,8 +21,7 @@ export async function getPokemonList(limit: number = 386): Promise<Pokemon[]> {
 
 export async function getPokemonById(id: string | number): Promise<PokemonDetail> {
   const pokemonData = await dex.getPokemonByName(id)
-  const paddedId = String(id).padStart(3, '0')
-  const image = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${paddedId}.png`
+  const image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonData.id}.png`
 
   return {
     id: pokemonData.id,
@@ -62,6 +60,5 @@ export async function getEvolutionChain(pokemonId: string | number): Promise<Evo
 }
 
 export function getPokemonImageUrl(id: number): string {
-  const paddedId = String(id).padStart(3, '0')
-  return `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${paddedId}.png`
+  return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
 }

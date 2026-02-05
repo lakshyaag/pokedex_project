@@ -10,13 +10,6 @@ import { FavoriteButton } from '@/components/favorite-button'
 import { EvolutionChainDisplay } from '@/components/evolution-chain'
 import { formatPokemonId, formatHeight, formatWeight, capitalizeFirst } from '@/lib/utils'
 
-export async function generateStaticParams() {
-  // Generate static params for all 386 Pokemon
-  return Array.from({ length: 386 }, (_, i) => ({
-    id: String(i + 1),
-  }))
-}
-
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const { id } = await params
   try {

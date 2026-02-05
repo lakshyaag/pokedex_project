@@ -52,21 +52,21 @@ export function SearchFilter({
           {selectedTypes.length > 0 && (
             <button
               onClick={() => selectedTypes.forEach(type => onTypeToggle(type))}
-              className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+              className="text-sm font-medium text-primary hover:text-primary/80 transition-colors"
             >
-              Clear all
+              Clear all ({selectedTypes.length})
             </button>
           )}
         </div>
-        <div className="flex flex-wrap gap-2">
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-9 gap-2">
           {pokemonTypes.map((type) => (
             <button
               key={type}
               onClick={() => onTypeToggle(type)}
-              className={`transition-all ${
+              className={`transition-all transform hover:scale-105 ${
                 selectedTypes.includes(type)
-                  ? 'ring-2 ring-ring ring-offset-2'
-                  : 'opacity-60 hover:opacity-100'
+                  ? 'ring-2 ring-primary ring-offset-2 ring-offset-background scale-105'
+                  : 'opacity-70 hover:opacity-100'
               }`}
             >
               <TypeBadge type={type} size="sm" />

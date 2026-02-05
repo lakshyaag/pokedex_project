@@ -43,7 +43,7 @@ export function PokemonGrid({ pokemonList }: PokemonGridProps) {
             Discover All Pokémon
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-balance">
-            Search, filter, and explore all 386 Pokémon from Generations I through III
+            Search, filter, and explore over 1,000 Pokémon from all generations
           </p>
         </div>
 
