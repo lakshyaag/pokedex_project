@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import { headers } from 'next/headers'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeft, Ruler, Weight } from 'lucide-react'
@@ -10,10 +11,9 @@ import { FavoriteButton } from '@/components/favorite-button'
 import { EvolutionChainDisplay } from '@/components/evolution-chain'
 import { formatPokemonId, formatHeight, formatWeight, capitalizeFirst } from '@/lib/utils'
 
-export const dynamic = 'force-dynamic'
-
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const { id } = await params
+  await headers() // Access request data to prevent prerender error
   try {
     const pokemon = await getPokemonById(id)
     return {
@@ -29,6 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 
 export default async function PokemonDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
+  await headers() // Access request data to prevent prerender error
   
   let pokemon
   try {

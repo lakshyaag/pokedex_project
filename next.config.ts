@@ -9,8 +9,7 @@ const nextConfig: NextConfig = {
         pathname: '/PokeAPI/sprites/master/sprites/pokemon/**'
       }
     ]
-  },
-  cacheComponents: true
+  }
 }
 
 export default nextConfig
