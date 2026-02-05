@@ -5,11 +5,11 @@ import { Heart } from 'lucide-react'
 import { useFavorites } from '@/hooks/use-favorites'
 import { PokemonCard } from './pokemon-card'
 import { getPokemonById } from '@/lib/pokemon-api'
-import type { Pokemon } from '@/lib/types'
+import type { PokemonDetail } from '@/lib/types'
 
 export function FavoritesContent() {
   const { favoriteIds } = useFavorites()
-  const [favoritePokemon, setFavoritePokemon] = useState<Pokemon[]>([])
+  const [favoritePokemon, setFavoritePokemon] = useState<PokemonDetail[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export function FavoritesContent() {
             }
           })
         )
-        setFavoritePokemon(pokemon.filter((p): p is Pokemon => p !== null))
+        setFavoritePokemon(pokemon.filter((p): p is PokemonDetail => p !== null))
       } catch (error) {
         console.error('Failed to load favorites:', error)
       } finally {
