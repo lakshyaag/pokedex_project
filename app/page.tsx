@@ -1,5 +1,3 @@
-'use cache'
-
 import { PokemonGrid } from '@/components/pokemon-grid'
 import { getPokemonList } from '@/lib/pokemon-api'
 import Pokedex from 'pokedex-promise-v2'
