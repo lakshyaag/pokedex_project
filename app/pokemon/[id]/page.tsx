@@ -10,6 +10,8 @@ import { FavoriteButton } from '@/components/favorite-button'
 import { EvolutionChainDisplay } from '@/components/evolution-chain'
 import { formatPokemonId, formatHeight, formatWeight, capitalizeFirst } from '@/lib/utils'
 
+export const dynamic = 'force-dynamic'
+
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const { id } = await params
   try {

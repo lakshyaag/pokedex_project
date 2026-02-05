@@ -3,6 +3,7 @@ export interface Pokemon {
   name: string
   image: string
   types: PokemonType[]
+  generation?: number
 }
 
 export interface PokemonType {

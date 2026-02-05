@@ -7,7 +7,7 @@ import Pokedex from 'pokedex-promise-v2'
 // Fetch types for all Pokemon
 async function getPokemonWithTypes() {
   const dex = new Pokedex()
-  const pokemonList = await getPokemonList(386)
+  const pokemonList = await getPokemonList(1025)
   
   // Fetch types for each pokemon
   const pokemonWithTypes = await Promise.all(
